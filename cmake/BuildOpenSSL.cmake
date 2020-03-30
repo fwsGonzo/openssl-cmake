@@ -29,7 +29,7 @@ include(ExternalProject)
 
 # find packages
 find_package(Git REQUIRED)
-find_package(PythonInterp 3 REQUIRED)
+find_package(Python3 COMPONENTS Interpreter)
 
 # # used to apply various patches to OpenSSL
 find_program(PATCH_PROGRAM patch)
@@ -103,7 +103,7 @@ else()
     endif()
 
     # python helper script for corrent building environment
-    set(BUILD_ENV_TOOL ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/scripts/building_env.py ${OS} ${MSYS_BASH} ${MINGW_MAKE})
+    set(BUILD_ENV_TOOL ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/scripts/building_env.py ${OS} ${MSYS_BASH} ${MINGW_MAKE})
 
     # disable everything we dont need
     set(CONFIGURE_OPENSSL_MODULES no-cast no-md2 no-md4 no-mdc2 no-rc4 no-rc5 no-engine no-idea no-mdc2 no-rc5 no-camellia no-ssl3 no-heartbeats no-gost no-deprecated no-capieng no-comp no-dtls no-psk no-srp no-dso no-dsa no-rc2 no-des)
